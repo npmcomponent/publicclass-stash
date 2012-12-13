@@ -3,6 +3,8 @@ module.exports = function createStash(){
   return new Stash();
 }
 
+var debug = false
+module.exports.debug = function(){ debug = true };
 module.exports.Stash = Stash;
 
 function Stash(){
@@ -16,7 +18,7 @@ Stash.prototype = {
   set: function(key,val){
     key = ''+key
     if( key in this.lookup ){
-      console.warn('key "%s" already exists in stash. deleting it first.',key)
+      debug && console.warn('key "%s" already exists in stash. deleting it first.',key)
       this.del(key);
     }
     var index = this.values.length;
@@ -31,7 +33,9 @@ Stash.prototype = {
     if( key in this.lookup ){
       var index = this.lookup[key];
       return this.values[index];
-    } else console.warn('tried to get "%s" that didn\'t exist',key)
+    } else {
+      debug && console.warn('tried to get "%s" that didn\'t exist',key)
+    }
     return undefined;
   },
 
@@ -61,7 +65,9 @@ Stash.prototype = {
         delete this.reverse[rindex];
         delete this.lookup[key];
       }
-    } else console.warn('tried to delete "%s" that didn\'t exist',key)
+    } else {
+      debug && console.warn('tried to delete "%s" that didn\'t exist',key)
+    }
     return this;
   },
 
