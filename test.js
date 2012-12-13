@@ -59,3 +59,15 @@ for(var i=0; i < stash.values.length; i++)
   assert(stash.values[i])
 
 assert.deepEqual(stash.values,[456,d])
+
+var vals = stash.values
+  , look = stash.lookup
+  , rev = stash.reverse;
+stash.empty()
+assert.strictEqual(stash.values,vals) // make sure the values wasn't recreated
+assert.strictEqual(stash.lookup,look) // make sure the lookup wasn't recreated
+assert.strictEqual(stash.reverse,rev) // make sure the reverse wasn't recreated
+assert.strictEqual(stash.values.length,0) // and it's empty
+assert.strictEqual(Object.keys(stash.lookup).length,0)
+assert.strictEqual(Object.keys(stash.reverse).length,0)
+

@@ -16,7 +16,7 @@ Stash.prototype = {
   set: function(key,val){
     key = ''+key
     if( key in this.lookup ){
-      console.warn('key "%s" already exists in stash. releting it first.',key)
+      console.warn('key "%s" already exists in stash. deleting it first.',key)
       this.del(key);
     }
     var index = this.values.length;
@@ -62,6 +62,16 @@ Stash.prototype = {
         delete this.lookup[key];
       }
     } else console.warn('tried to delete "%s" that didn\'t exist',key)
+    return this;
+  },
+
+  empty: function(){
+    this.values.length = 0
+    for(var i in this.reverse){
+      var k = this.reverse[i]
+      delete this.lookup[k]
+      delete this.reverse[i]
+    }
     return this;
   }
 
