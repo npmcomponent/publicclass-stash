@@ -1,5 +1,6 @@
-
 # stash
+
+  [![Build Status](https://travis-ci.org/publicclass/stash.png)](https://travis-ci.org/publicclass/stash)
 
   A hash-like data structure that keeps the values in a dense unordered array.
 
