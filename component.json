@@ -2,7 +2,7 @@
   "name": "stash",
   "repo": "publicclass/stash",
   "description": "A hash-like data structure that keeps the values in a dense unordered array.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "keywords": [],
   "dependencies": {},
   "development": {},
