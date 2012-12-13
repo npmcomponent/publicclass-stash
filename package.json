@@ -1,0 +1,22 @@
+{
+  "name": "stash",
+  "version": "0.1.0",
+  "description": "A hash-like data structure that keeps the values in a dense unordered array.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com:publicclass/stash.git"
+  },
+  "keywords": [
+    "datastructure",
+    "hash",
+    "stash",
+    "unordered"
+  ],
+  "author": "Robert Sköld <robert@publicclass.se>",
+  "license": "MIT",
+  "readmeFilename": "Readme.md"
+}
