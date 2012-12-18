@@ -17,6 +17,28 @@
 
 ## API
 
+### Stash()
+
+  Returns a stash instance.
+  
+### Stash#set(key,value)
+
+  Assigns a `value` to a `key`. Overwrites any previous value of `key`.
+  
+### Stash#get(key)
+
+  Returns the value of a `key`. Or if key does not have a value it will return `null`.
+
+### Stash#del(key)
+
+  Removes the the `key` and reassigns the index of the value to the last stashed value. This way the `Stash#values` array will always be kept dense.
+
+### Stash#values
+
+  A dense array of all the values in the stash. Useful for loops.
+
+## Example
+
     var stash = require('stash');
 
     var bucket = stash();
