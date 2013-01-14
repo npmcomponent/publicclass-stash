@@ -1,4 +1,12 @@
 
+0.3.0 / 2013-01-14
+==================
+
+  * Added some tests for #has() and #length
+  * Removed stash.debug(). Now it will warn when keys don't exist (use #has() to avoid)
+  * Added Stash#has(key)
+  * Added Stash#length
+
 0.2.1 / 2012-12-13
 ==================
 
