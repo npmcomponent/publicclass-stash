@@ -28,6 +28,10 @@ Stash.prototype = {
     return this
   },
 
+  has: function(key){
+    return (''+key) in this.lookup;
+  },
+
   get: function(key){
     key = ''+key
     if( key in this.lookup ){
