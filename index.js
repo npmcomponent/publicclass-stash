@@ -3,14 +3,13 @@ module.exports = function createStash(){
   return new Stash();
 }
 
-var debug = false
-module.exports.debug = function(){ debug = true };
 module.exports.Stash = Stash;
 
 function Stash(){
   this.values = [];
   this.lookup = {};   // [key] = index
   this.reverse = {};  // [index] = key
+  this.length = 0;
 }
 
 Stash.prototype = {
@@ -25,6 +24,7 @@ Stash.prototype = {
     this.lookup[key] = index;
     this.reverse[index] = key;
     this.values.push(val)
+    this.length++;
     return this
   },
 
@@ -53,6 +53,7 @@ Stash.prototype = {
         this.values.pop();
         delete this.reverse[index];
         delete this.lookup[key];
+        this.length--;
 
       } else {
         this.values[index] = this.values.pop();
@@ -64,15 +65,15 @@ Stash.prototype = {
         this.reverse[index] = rkey;
         delete this.reverse[rindex];
         delete this.lookup[key];
+        this.length--;
       }
-    } else {
-      debug && console.warn('tried to delete "%s" that didn\'t exist',key)
-    }
+    } else console.warn('tried to delete "%s" that didn\'t exist',key)
     return this;
   },
 
   empty: function(){
     this.values.length = 0
+    this.length = 0
     for(var i in this.reverse){
       var k = this.reverse[i]
       delete this.lookup[k]
