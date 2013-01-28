@@ -48,16 +48,17 @@ Stash.prototype = {
       // position of the deleted value
       // to keep the array dense (and
       // avoid unnecessary allocation)
-      var index = this.lookup[key];
+      var index = this.lookup[key]
+        , end = this.length-1;
 
       // special case if the deleted key is last value (no need to reorder stuff)
-      if( index == this.values.length-1 ){
+      if( index == end ){
         this.values.pop();
         delete this.reverse[index];
         delete this.lookup[key];
         this.length--;
 
-      } else {
+      } else if( index >= 0 && index < end ){
         this.values[index] = this.values.pop();
 
         // update the lookups
@@ -68,7 +69,7 @@ Stash.prototype = {
         delete this.reverse[rindex];
         delete this.lookup[key];
         this.length--;
-      }
+      } else console.warn('tried to delete "%s" with an invalid index %s',key,index)
     } else console.warn('tried to delete "%s" that didn\'t exist',key)
     return this;
   },
