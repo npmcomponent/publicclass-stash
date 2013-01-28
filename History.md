@@ -1,4 +1,9 @@
 
+0.3.1 / 2013-01-28
+==================
+
+  * Avoids a bug when the index in the lookup is out of range.
+
 0.3.0 / 2013-01-14
 ==================
 
